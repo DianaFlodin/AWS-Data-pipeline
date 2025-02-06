@@ -34,3 +34,23 @@ Det här projektet implementerar en fullständig data-pipeline för att extraher
 
 
 ![Architecture Diagram](images/AWSpicture.drawio.png)
+
+---
+
+## Hur man kör projektet
+
+För att köra projektet och exekvera pipelinen, följ dessa steg:
+
+### 1. **Kör Glue-jobben**
+För att köra Glue-jobben (dataextraktion och transformation), använd AWS Glue Console eller AWS CLI.
+
+**Exempel på Glue-jobbskod** (`data_extraction.py`):
+```python
+import boto3
+
+# Skapa en Glue-klient
+glue_client = boto3.client('glue', region_name='us-west-2')
+
+# Exekvera Glue-jobb
+response = glue_client.start_job_run(JobName='MyGlueJob')
+print(f"Jobb startad: {response['JobRunId']}")
